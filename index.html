@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antigravity | Student & College Discovery Hub</title>
+  <meta name="description" content="Dual-purpose academic productivity workspace and comprehensive higher education exploration directory for Government, Private, and Autonomous colleges.">
+  <meta name="theme-color" content="#6366f1">
+
+  <!-- FontAwesome 6 Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Core & Module CSS Stylesheets -->
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/explorer.css">
+  <link rel="stylesheet" href="./css/academic.css">
+  <link rel="stylesheet" href="./css/toolkit.css">
+  <link rel="stylesheet" href="./css/placement.css">
+  <link rel="stylesheet" href="./css/community.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- ==================== SIDEBAR NAVIGATION ==================== -->
+    <aside class="app-sidebar" aria-label="Main Navigation">
+      <div class="sidebar-brand">
+        <div class="brand-icon">
+          <i class="fas fa-meteor"></i>
+        </div>
+        <div class="brand-info">
+          <h1>Antigravity</h1>
+          <span>Student & College Hub</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Prospect & Discovery</div>
+        <button class="nav-item active" data-view="explorer" id="nav-btn-explorer">
+          <i class="fas fa-university"></i>
+          <span>College Explorer</span>
+          <span class="nav-badge">20+</span>
+        </button>
+        <button class="nav-item" data-view="academic" id="nav-btn-academic">
+          <i class="fas fa-graduation-cap"></i>
+          <span>Academic System</span>
+        </button>
+
+        <div class="nav-section-label">Student Workspace</div>
+        <button class="nav-item" data-view="toolkit" id="nav-btn-toolkit">
+          <i class="fas fa-tools"></i>
+          <span>Academic Toolkit</span>
+          <span class="nav-badge" style="background: rgba(16, 185, 129, 0.2); color: #10b981;">GPA/Tasks</span>
+        </button>
+        <button class="nav-item" data-view="placement" id="nav-btn-placement">
+          <i class="fas fa-briefcase"></i>
+          <span>Placement Center</span>
+        </button>
+        <button class="nav-item" data-view="community" id="nav-btn-community">
+          <i class="fas fa-users"></i>
+          <span>Student Forum</span>
+          <span class="nav-badge" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">Q&A</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-quick-profile">
+          <div class="user-avatar">AG</div>
+          <div>
+            <div class="user-meta-name">Scholar Workspace</div>
+            <div class="user-meta-tag"><i class="fas fa-circle" style="color: var(--success); font-size: 0.6rem;"></i> Active Session</div>
+          </div>
+        </div>
+        <button class="header-icon-btn" id="export-workspace-btn" title="Backup / Export Workspace Data">
+          <i class="fas fa-download"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <div class="app-main">
+      
+      <!-- Top Application Header -->
+      <header class="app-header">
+        <div class="header-left">
+          <button class="menu-toggle-btn" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="header-title-wrap">
+            <h2 id="header-view-title">College Explorer & Discovery</h2>
+            <p id="header-view-desc">Explore Government & Private colleges, campus scales (Small to Mega), scholarships, and student insights.</p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <button class="theme-toggle-btn" id="theme-toggle-btn" title="Switch Theme">
+            <i class="fas fa-sun"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- ==================== MODULE 1: COLLEGE EXPLORER ==================== -->
+      <section class="view-container active" id="view-explorer" aria-labelledby="header-view-title">
+        
+        <div class="module-hero">
+          <div class="module-hero-content">
+            <span class="module-badge"><i class="fas fa-compass"></i> Higher Education Explorer</span>
+            <h2>Government & Private Colleges Directory</h2>
+            <p>Explore institutions from boutique specialized campuses to mega flagship universities, browse 100% fee waiver scholarships, student life reviews, and compare specs side-by-side.</p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-end;">
+            <button class="btn btn-primary" id="open-scholarship-modal-btn">
+              <i class="fas fa-award"></i> Scholarships & Aid Finder
+            </button>
+            <div class="hero-stats-row">
+              <div class="hero-stat-card">
+                <div class="stat-val">20+</div>
+                <div class="stat-lbl">Institutes</div>
+              </div>
+              <div class="hero-stat-card">
+                <div class="stat-val">100%</div>
+                <div class="stat-lbl">Fee Waivers</div>
+              </div>
+              <div class="hero-stat-card">
+                <div class="stat-val">₹22.0L</div>
+                <div class="stat-lbl">Top Median CTC</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="explorer-toolbar">
+          <div class="search-input-wrap">
+            <i class="fas fa-search"></i>
+            <input type="text" class="form-control" id="college-search-input" placeholder="Search by college name, degree (e.g. B.Tech, MBBS), city, scholarships, or recruiters (e.g. IIT, BITS, Google)...">
+          </div>
+
+          <div class="filter-controls-row">
+            <!-- 1. Sort Sorter (Small to Big Campus, etc.) -->
+            <select class="filter-select" id="filter-sort" style="font-weight: 700; border-color: var(--border-highlight);">
+              <option value="nirf">⭐ Sort: NIRF Rank (1 to 100)</option>
+              <option value="size-asc">📐 Campus Size: Small to Big (Acres)</option>
+              <option value="size-desc">🏰 Campus Size: Big to Small (Acres)</option>
+              <option value="intake-asc">👥 Student Intake: Boutique to Large</option>
+              <option value="fee-asc">💵 Tuition Fee: Low to High</option>
+              <option value="placement-desc">🚀 Median CTC: High to Low</option>
+            </select>
+
+            <!-- 2. Ownership Type Filter -->
+            <select class="filter-select" id="filter-type">
+              <option value="all">All Ownership Types</option>
+              <option value="govt">🏛️ Government (IIT / NIT / Central)</option>
+              <option value="state-govt">🏢 State Government University</option>
+              <option value="private">🏰 Private / Deemed University</option>
+              <option value="autonomous">⚖️ Autonomous / PPP Institute</option>
+            </select>
+
+            <!-- 3. Campus Scale Filter (Small to Big) -->
+            <select class="filter-select" id="filter-scale">
+              <option value="all">All Campus Scales</option>
+              <option value="boutique">🔬 Boutique Campus (<50 Acres)</option>
+              <option value="mid">🏫 Mid-Size Campus (50-300 Acres)</option>
+              <option value="mega">🏰 Mega Campus (>300 Acres)</option>
+            </select>
+
+            <!-- 4. Degree Filter -->
+            <select class="filter-select" id="filter-degree">
+              <option value="all">All Degree Programs</option>
+              <option value="btech">🎓 B.Tech / B.E. (Engineering)</option>
+              <option value="dual">⚡ Dual Degree (B.Tech+M.Tech / M.Sc)</option>
+              <option value="mbbs">🩺 MBBS / Medical</option>
+              <option value="mba">💼 MBA / Management</option>
+              <option value="bsc">🔬 B.Sc / BS Research</option>
+              <option value="ba">📚 B.A. / Liberal Arts</option>
+              <option value="bdes">🎨 B.Des / Design</option>
+              <option value="law">⚖️ B.A. LL.B. (Law)</option>
+              <option value="mca">💻 BCA / MCA</option>
+            </select>
+
+            <!-- 5. Scholarship Filter -->
+            <select class="filter-select" id="filter-scholarship">
+              <option value="all">All Scholarships & Aid</option>
+              <option value="full-waiver">💰 100% Full Fee Waiver Eligible</option>
+              <option value="merit">🏆 Merit Scholarships Available</option>
+            </select>
+
+            <!-- 6. Stream Filter -->
+            <select class="filter-select" id="filter-stream">
+              <option value="all">All Academic Streams</option>
+              <option value="engineering">Engineering & Tech</option>
+              <option value="management">Management & Business</option>
+              <option value="medical">Medical & Healthcare</option>
+              <option value="sciences">Pure Sciences & Research</option>
+              <option value="arts">Liberal Arts & Humanities</option>
+              <option value="law">Law & Legal Studies</option>
+              <option value="design">Design & Architecture</option>
+            </select>
+
+            <!-- 7. State Filter -->
+            <select class="filter-select" id="filter-state">
+              <option value="all">All Locations / States</option>
+            </select>
+
+            <!-- 8. Tuition Fee Filter -->
+            <select class="filter-select" id="filter-fee">
+              <option value="all">Any Annual Fee</option>
+              <option value="50000">Under ₹50,000 / yr</option>
+              <option value="250000">Under ₹2.5 Lakh / yr</option>
+              <option value="600000">Under ₹6.0 Lakh / yr</option>
+              <option value="1500000">Under ₹15.0 Lakh / yr</option>
+            </select>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 6px; border-top: 1px solid var(--border-subtle); flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary btn-sm active" id="tab-college-all"><i class="fas fa-list"></i> All Colleges</button>
+              <button class="btn btn-secondary btn-sm" id="tab-college-bookmarks"><i class="fas fa-bookmark"></i> Bookmarked</button>
+            </div>
+            <button class="btn btn-outline btn-sm reset-filters-btn" id="reset-college-filters" title="Reset Filters"><i class="fas fa-undo"></i> Reset All Filters</button>
+          </div>
+        </div>
+
+        <!-- College Cards Grid -->
+        <div class="colleges-grid" id="colleges-grid">
+          <!-- Populated by collegeExplorer.js -->
+        </div>
+
+      </section>
+
+      <!-- ==================== MODULE 2: ACADEMIC SYSTEM & COURSE VISUALIZER ==================== -->
+      <section class="view-container" id="view-academic">
+        
+        <div class="module-hero">
+          <div class="module-hero-content">
+            <span class="module-badge"><i class="fas fa-project-diagram"></i> Curriculum Intelligence</span>
+            <h2>Degree Roadmap & Grading Scheme Explainer</h2>
+            <p>Interactive semester milestone trajectories, prerequisite dependency maps, and a universal 10-Point to 4.0 GPA converter.</p>
+          </div>
+          <div class="academic-nav-switch">
+            <button class="btn btn-primary btn-sm" id="tab-academic-roadmap"><i class="fas fa-sitemap"></i> Semester Roadmap</button>
+            <button class="btn btn-secondary btn-sm" id="tab-academic-grading"><i class="fas fa-chart-pie"></i> Grading Guide & Converter</button>
+          </div>
+        </div>
+
+        <!-- Sub-Pane 1: Roadmap View -->
+        <div id="pane-academic-roadmap" class="academic-pane active">
+          <div class="roadmap-controls-bar">
+            <div class="major-select-wrap">
+              <label for="academic-major-select"><i class="fas fa-book"></i> Major Curriculum:</label>
+              <select class="select-control" id="academic-major-select">
+                <option value="cse">Computer Science & Engineering (B.Tech - 160 Credits)</option>
+                <option value="aids">Artificial Intelligence & Data Science (B.Tech - 160 Credits)</option>
+              </select>
+            </div>
+
+            <div class="roadmap-legend">
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Click any course card to highlight prerequisites:</span>
+              <div class="legend-item"><span class="legend-dot dot-core"></span> Core CS</div>
+              <div class="legend-item"><span class="legend-dot dot-math"></span> Math/Stats</div>
+              <div class="legend-item"><span class="legend-dot dot-elective"></span> Elective</div>
+              <div class="legend-item"><span class="legend-dot dot-project"></span> Capstone</div>
+            </div>
+          </div>
+
+          <div class="semester-timeline" id="semester-timeline-container">
+            <!-- Populated by academicRoadmap.js -->
+          </div>
+        </div>
+
+        <!-- Sub-Pane 2: Grading Guide & Universal Converter -->
+        <div id="pane-academic-grading" class="academic-pane">
+          <div class="grading-container">
+            <div class="grading-card">
+              <h3><i class="fas fa-table" style="color: var(--brand-primary);"></i> 10-Point UGC/AICTE Grading Scale</h3>
+              <div style="overflow-x: auto;">
+                <table class="grading-scale-table">
+                  <thead>
+                    <tr>
+                      <th>Letter Grade</th>
+                      <th>Grade Point</th>
+                      <th>Marks Range</th>
+                      <th>4.0 GPA Equiv.</th>
+                      <th>Qualitative Performance</th>
+                    </tr>
+                  </thead>
+                  <tbody id="grading-scale-tbody">
+                    <!-- Populated by academicRoadmap.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="grading-card">
+              <h3><i class="fas fa-calculator" style="color: var(--brand-secondary);"></i> Universal Grade Converter</h3>
+              <p style="font-size: 0.86rem; color: var(--text-secondary);">Convert instantly between Indian 10-Point CGPA, US 4.0 Scale, and Percentage scores.</p>
+              
+              <div class="converter-box">
+                <div class="form-group">
+                  <label class="form-label" for="grade-converter-type">Select Input Metric:</label>
+                  <select class="select-control" id="grade-converter-type" style="width: 100%;">
+                    <option value="cgpa10">10-Point Indian CGPA Scale</option>
+                    <option value="gpa4">4.0 US Scale GPA</option>
+                    <option value="pct">Aggregate Percentage (%)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="grade-converter-input">Enter Score / CGPA:</label>
+                  <input type="number" step="0.01" min="0" max="100" class="form-control" id="grade-converter-input" value="8.5">
+                </div>
+
+                <div class="converter-results-grid">
+                  <div class="converter-res-item">
+                    <div class="res-val" id="conv-res-10pt">8.50</div>
+                    <div class="res-lbl">10-Point CGPA</div>
+                  </div>
+                  <div class="converter-res-item">
+                    <div class="res-val" id="conv-res-4pt">3.40</div>
+                    <div class="res-lbl">4.0 Scale GPA</div>
+                  </div>
+                  <div class="converter-res-item">
+                    <div class="res-val" id="conv-res-pct">77.5%</div>
+                    <div class="res-lbl">Percentage Equiv.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-top: 20px; font-size: 0.82rem; color: var(--text-secondary); background: var(--bg-surface-elevated); padding: 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--brand-secondary);">
+                <strong>Relative vs. Absolute Grading:</strong>
+                <p style="margin-top: 4px;">In relative grading, your grade is calculated using the Gaussian distribution curve: <code>Z = (X - μ) / σ</code>, adjusting for class exam difficulty variance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==================== MODULE 3: STUDENT ACADEMIC TOOLKIT ==================== -->
+      <section class="view-container" id="view-toolkit">
+        
+        <div class="module-hero">
+          <div class="module-hero-content">
+            <span class="module-badge"><i class="fas fa-toolbox"></i> Productivity Suite</span>
+            <h2>Student Academic Workspace</h2>
+            <p>Compute semester & cumulative CGPA, track assignments alongside a Pomodoro timer, and master CS core concepts with 3D flashcards.</p>
+          </div>
+          <div class="hero-stats-row">
+            <div class="hero-stat-card">
+              <div class="stat-val" id="pomo-streak-count">4</div>
+              <div class="stat-lbl">Focus Streaks</div>
+            </div>
+            <div class="hero-stat-card">
+              <div class="stat-val">100%</div>
+              <div class="stat-lbl">Local Privacy</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toolkit Sub-Tabs -->
+        <div class="toolkit-tabs-bar">
+          <button class="toolkit-tab-btn active" data-tab="gpa"><i class="fas fa-calculator"></i> GPA & CGPA Calculator</button>
+          <button class="toolkit-tab-btn" data-tab="focus"><i class="fas fa-stopwatch"></i> Focus Timer & Tasks</button>
+          <button class="toolkit-tab-btn" data-tab="flashcards"><i class="fas fa-clone"></i> 3D Flashcards Vault</button>
+        </div>
+
+        <!-- 1. GPA Calculator Pane -->
+        <div class="toolkit-pane active" id="pane-toolkit-gpa">
+          <div class="gpa-calculator-layout">
+            
+            <div class="calculator-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                <h3 style="font-size: 1.15rem; font-weight: 700;"><i class="fas fa-book-open" style="color: var(--brand-primary);"></i> Current Semester Courses</h3>
+                <button class="btn btn-secondary btn-sm" id="gpa-add-course-btn"><i class="fas fa-plus"></i> Add Course</button>
+              </div>
+
+              <div id="gpa-courses-list">
+                <!-- Populated dynamically by studentToolkit.js -->
+              </div>
+            </div>
+
+            <div class="gpa-summary-card">
+              <div class="gpa-big-display">
+                <div class="gpa-score-label">Semester GPA (SGPA)</div>
+                <div class="gpa-score-number" id="gpa-score-display">8.82</div>
+                <span class="badge badge-primary" id="gpa-total-credits-display">17 Credits</span>
+              </div>
+
+              <div class="cumulative-calculator-box">
+                <h4><i class="fas fa-history" style="color: var(--brand-secondary);"></i> Cumulative CGPA Integrator</h4>
+                <div class="form-group">
+                  <label class="form-label" for="past-credits-input">Prior Total Credits Completed:</label>
+                  <input type="number" class="form-control" id="past-credits-input" value="68" placeholder="e.g. 68">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="past-cgpa-input">Prior Cumulative CGPA:</label>
+                  <input type="number" step="0.01" class="form-control" id="past-cgpa-input" value="8.40" placeholder="e.g. 8.40">
+                </div>
+
+                <div style="text-align: center; padding-top: 12px; border-top: 1px solid var(--border-subtle);">
+                  <span style="font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Updated Overall CGPA</span>
+                  <div style="font-size: 2rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; color: var(--success);" id="cgpa-score-display">8.48</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 2. Focus & Task Manager Pane -->
+        <div class="toolkit-pane" id="pane-toolkit-focus">
+          <div class="focus-workspace-grid">
+            
+            <!-- Pomodoro Timer -->
+            <div class="pomodoro-card">
+              <div class="pomo-mode-toggle">
+                <button class="pomo-mode-btn active" data-mode="pomodoro">Focus (25m)</button>
+                <button class="pomo-mode-btn" data-mode="shortBreak">Break (5m)</button>
+                <button class="pomo-mode-btn" data-mode="longBreak">Long (15m)</button>
+              </div>
+
+              <div class="timer-dial-container">
+                <svg class="timer-svg" width="220" height="220" viewBox="0 0 220 220">
+                  <circle class="timer-svg-bg" cx="110" cy="110" r="90"></circle>
+                  <circle class="timer-svg-progress" id="pomo-progress-circle" cx="110" cy="110" r="90" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+                </svg>
+                <div class="timer-time-display">
+                  <div class="timer-digits" id="pomo-time-digits">25:00</div>
+                  <div class="timer-phase-lbl" id="pomo-phase-label">Focus Session</div>
+                </div>
+              </div>
+
+              <div class="timer-controls-row">
+                <button class="btn btn-primary btn-lg" id="pomo-start-btn" style="flex: 1;"><i class="fas fa-play"></i> Start Focus</button>
+                <button class="btn btn-secondary btn-lg" id="pomo-reset-btn" title="Reset"><i class="fas fa-redo"></i></button>
+              </div>
+            </div>
+
+            <!-- Task Board -->
+            <div class="tasks-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <h3 style="font-size: 1.15rem; font-weight: 700;"><i class="fas fa-tasks" style="color: var(--brand-secondary);"></i> Assignment & Deadline Checklist</h3>
+                <div class="task-filter-pills">
+                  <button class="task-filter-btn active" data-filter="all">All</button>
+                  <button class="task-filter-btn" data-filter="pending">Pending</button>
+                  <button class="task-filter-btn" data-filter="completed">Done</button>
+                </div>
+              </div>
+
+              <div class="task-add-bar">
+                <input type="text" class="form-control" id="task-input-title" placeholder="New assignment or study objective...">
+                <input type="text" class="form-control" id="task-input-tag" placeholder="Tag (e.g. CS202)">
+                <select class="select-control" id="task-input-priority">
+                  <option value="High">High Priority</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+                <input type="date" class="form-control" id="task-input-date" style="display: none;">
+                <button class="btn btn-primary" id="task-add-btn"><i class="fas fa-plus"></i> Add</button>
+              </div>
+
+              <div class="tasks-list-container" id="tasks-list-container">
+                <!-- Populated dynamically by studentToolkit.js -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 3. Flashcards Pane -->
+        <div class="toolkit-pane" id="pane-toolkit-flashcards">
+          <div class="flashcards-wrapper">
+            
+            <div class="flashcard-deck-bar">
+              <div class="deck-select-group">
+                <label for="flashcard-deck-select" style="font-weight: 600; font-size: 0.88rem;"><i class="fas fa-folder"></i> Subject Deck:</label>
+                <select class="select-control" id="flashcard-deck-select">
+                  <option value="all">All Flashcard Decks</option>
+                </select>
+              </div>
+
+              <div style="display: flex; gap: 8px;">
+                <button class="btn btn-secondary btn-sm" id="fc-shuffle-btn"><i class="fas fa-random"></i> Shuffle</button>
+                <button class="btn btn-primary btn-sm" id="open-add-card-modal-btn"><i class="fas fa-plus"></i> Create Card</button>
+              </div>
+            </div>
+
+            <!-- 3D Flip Card Scene -->
+            <div class="flashcard-scene">
+              <div class="flashcard-object" id="flashcard-object" title="Click to Flip">
+                <!-- Front Face (Question) -->
+                <div class="flashcard-face flashcard-front">
+                  <div class="fc-header">
+                    <span class="fc-tag" id="fc-deck-tag">Data Structures</span>
+                    <span class="badge badge-warning" id="fc-diff-badge">Medium</span>
+                  </div>
+                  <div class="fc-body-text" id="fc-question-text">
+                    What is the time complexity of finding LCA in BST?
+                  </div>
+                  <div class="fc-hint-footer">
+                    <i class="fas fa-sync-alt"></i> Click card or press [Space] to reveal answer
+                  </div>
+                </div>
+
+                <!-- Back Face (Answer) -->
+                <div class="flashcard-face flashcard-back">
+                  <div class="fc-header">
+                    <span class="fc-tag" style="color: var(--success);"><i class="fas fa-check-circle"></i> Solution & Explanation</span>
+                    <span style="font-size: 0.78rem; color: var(--text-muted);">Answer Panel</span>
+                  </div>
+                  <div class="fc-body-text answer-text" id="fc-answer-text">
+                    In a BST, it takes O(h) time by comparing node values with root iteratively.
+                  </div>
+                  <div class="fc-hint-footer">
+                    <i class="fas fa-redo"></i> Click again to flip back
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Controls & Mastery Row -->
+            <div class="flashcard-controls-bar">
+              <button class="btn btn-secondary" id="fc-prev-btn"><i class="fas fa-arrow-left"></i> Previous</button>
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                <span id="fc-counter-text" style="font-family: 'JetBrains Mono', monospace; font-weight: 700;">1 / 7</span>
+                <button class="btn btn-outline btn-sm" id="fc-flip-btn"><i class="fas fa-eye"></i> Toggle Answer</button>
+              </div>
+              <button class="btn btn-secondary" id="fc-next-btn">Next <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <div style="background: var(--bg-glass-card); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
+              <span style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; display: block;">Spaced Repetition Mastery Self-Rating:</span>
+              <div class="mastery-rating-row">
+                <button class="btn mastery-btn hard" data-rate="Hard"><i class="fas fa-times"></i> Hard (Repeat Soon)</button>
+                <button class="btn mastery-btn medium" data-rate="Medium"><i class="fas fa-minus"></i> Medium</button>
+                <button class="btn mastery-btn easy" data-rate="Easy"><i class="fas fa-check"></i> Easy (Mastered)</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==================== MODULE 4: CAREER & CAMPUS PLACEMENT CENTER ==================== -->
+      <section class="view-container" id="view-placement">
+        
+        <div class="module-hero">
+          <div class="module-hero-content">
+            <span class="module-badge"><i class="fas fa-briefcase"></i> Career Acceleration</span>
+            <h2>Placement Tracker & Interview Vault</h2>
+            <p>Track recruitment opportunities with automated CGPA eligibility checks, and prepare with curated technical/behavioral interview solutions.</p>
+          </div>
+          <div class="placement-nav-tabs">
+            <button class="btn btn-primary btn-sm active" id="tab-placement-recruiters"><i class="fas fa-building"></i> Company Drives</button>
+            <button class="btn btn-secondary btn-sm" id="tab-placement-questions"><i class="fas fa-code"></i> Interview Question Bank</button>
+          </div>
+        </div>
+
+        <!-- Sub-Pane 1: Company Recruitment Tracker -->
+        <div id="pane-placement-recruiters" class="placement-pane active">
+          
+          <div class="eligibility-checker-bar">
+            <div>
+              <strong style="font-size: 0.94rem;"><i class="fas fa-filter" style="color: var(--brand-primary);"></i> Dynamic CGPA Eligibility Filter:</strong>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px;">Enter your current CGPA to dynamically highlight companies where you meet shortlisting criteria.</p>
+            </div>
+            <div class="cgpa-input-group">
+              <label for="user-cgpa-eligibility-input" style="font-size: 0.84rem; font-weight: 600;">Your CGPA:</label>
+              <input type="number" step="0.1" min="0" max="10" class="form-control" id="user-cgpa-eligibility-input" value="8.5">
+            </div>
+          </div>
+
+          <div class="recruiters-grid" id="recruiters-grid-container">
+            <!-- Populated by careerPlacement.js -->
+          </div>
+        </div>
+
+        <!-- Sub-Pane 2: Interview Question Bank -->
+        <div id="pane-placement-questions" class="placement-pane">
+          
+          <div class="interview-bank-toolbar">
+            <div class="search-input-wrap" style="flex: 1 1 240px;">
+              <i class="fas fa-search"></i>
+              <input type="text" class="form-control" id="question-search-input" placeholder="Search questions, topics, or companies (e.g. LRU, TinyURL, Google)...">
+            </div>
+
+            <select class="select-control" id="question-category-filter">
+              <option value="all">All Engineering Categories</option>
+              <option value="Data Structures & Algorithms">Data Structures & Algorithms</option>
+              <option value="System Design">System Design & Cloud</option>
+              <option value="Operating Systems & Concurrency">Operating Systems & Concurrency</option>
+              <option value="Behavioral & HR">Behavioral & HR (STAR Method)</option>
+            </select>
+
+            <select class="select-control" id="question-difficulty-filter">
+              <option value="all">All Difficulties</option>
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
+            </select>
+          </div>
+
+          <div class="questions-accordion" id="questions-accordion-container">
+            <!-- Populated by careerPlacement.js -->
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ==================== MODULE 5: STUDENT COMMUNITY & Q&A FORUM ==================== -->
+      <section class="view-container" id="view-community">
+        
+        <div class="module-hero">
+          <div class="module-hero-content">
+            <span class="module-badge"><i class="fas fa-comments"></i> Peer Collaboration</span>
+            <h2>Student Community & Discussion Board</h2>
+            <p>Ask admissions advice, compare college opportunities, resolve course dilemmas, and upvote peer insights.</p>
+          </div>
+          <button class="btn btn-primary" id="open-new-thread-modal-btn"><i class="fas fa-edit"></i> Ask a Question</button>
+        </div>
+
+        <div class="forum-top-bar">
+          <div class="forum-search-wrap">
+            <i class="fas fa-search"></i>
+            <input type="text" class="form-control" id="forum-search-input" placeholder="Search discussions by keyword, tags, or question topic...">
+          </div>
+        </div>
+
+        <div class="forum-tag-filters" id="forum-tag-filters">
+          <button class="forum-tag-pill active" data-tag="all">All Topics</button>
+          <button class="forum-tag-pill" data-tag="#Placement">#Placement</button>
+          <button class="forum-tag-pill" data-tag="#Admissions">#Admissions</button>
+          <button class="forum-tag-pill" data-tag="#Academics">#Academics</button>
+          <button class="forum-tag-pill" data-tag="#DSA">#DSA</button>
+          <button class="forum-tag-pill" data-tag="#BITSvIIT">#BITSvIIT</button>
+        </div>
+
+        <div class="threads-stream" id="threads-stream-container">
+          <!-- Populated by communityForum.js -->
+        </div>
+
+      </section>
+
+    </div>
+  </div>
+
+  <!-- ==================== FLOATING COMPARISON DOCK ==================== -->
+  <div class="comparison-dock" id="comparison-dock" role="region" aria-label="College Comparison Dock">
+    <div style="font-weight: 700; font-size: 0.88rem; display: flex; align-items: center; gap: 6px;">
+      <i class="fas fa-exchange-alt" style="color: var(--brand-primary);"></i> Compare:
+    </div>
+    <div class="dock-items" id="dock-chips"></div>
+    <div style="display: flex; gap: 8px;">
+      <button class="btn btn-primary btn-sm" id="dock-compare-btn">Compare Specs</button>
+      <button class="btn btn-outline btn-sm" id="dock-clear-btn">Clear</button>
+    </div>
+  </div>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- 1. College Detail Modal -->
+  <div class="modal-overlay" id="college-detail-modal" role="dialog" aria-modal="true">
+    <div class="modal-card modal-lg">
+      <div class="modal-header">
+        <h3 class="modal-title">College & Student Profile</h3>
+        <button class="modal-close-btn" aria-label="Close modal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary modal-dismiss-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. College Comparison Matrix Modal -->
+  <div class="modal-overlay" id="college-compare-modal" role="dialog" aria-modal="true">
+    <div class="modal-card modal-lg">
+      <div class="modal-header">
+        <h3><i class="fas fa-exchange-alt" style="color: var(--brand-primary);"></i> Side-by-Side Institute Comparison</h3>
+        <button class="modal-close-btn" aria-label="Close modal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary modal-dismiss-btn">Close Comparison</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. National & Institutional Scholarship Directory Modal -->
+  <div class="modal-overlay" id="scholarship-hub-modal" role="dialog" aria-modal="true">
+    <div class="modal-card modal-lg">
+      <div class="modal-header">
+        <h3><i class="fas fa-hand-holding-usd" style="color: var(--success);"></i> Scholarship & Financial Aid Finder</h3>
+        <button class="modal-close-btn" aria-label="Close modal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary modal-dismiss-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Create Custom Flashcard Modal -->
+  <div class="modal-overlay" id="add-flashcard-modal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i class="fas fa-clone" style="color: var(--brand-primary);"></i> Create New Flashcard</h3>
+        <button class="modal-close-btn" aria-label="Close modal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label" for="new-card-deck">Subject Deck:</label>
+          <input type="text" class="form-control" id="new-card-deck" placeholder="e.g. Data Structures & Algorithms">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="new-card-topic">Topic / Sub-concept:</label>
+          <input type="text" class="form-control" id="new-card-topic" placeholder="e.g. Red-Black Trees">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="new-card-question">Front Prompt / Question:</label>
+          <textarea class="form-control" id="new-card-question" rows="3" placeholder="Enter the question or concept to test..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="new-card-answer">Back Answer / Explanation:</label>
+          <textarea class="form-control" id="new-card-answer" rows="4" placeholder="Enter clear solution, key formulas, or code details..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="new-card-difficulty">Difficulty Level:</label>
+          <select class="select-control" id="new-card-difficulty">
+            <option value="Easy">Easy</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary modal-dismiss-btn">Cancel</button>
+        <button class="btn btn-primary" id="save-new-card-btn"><i class="fas fa-save"></i> Save Flashcard</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Ask a Question / New Forum Thread Modal -->
+  <div class="modal-overlay" id="new-thread-modal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i class="fas fa-edit" style="color: var(--brand-primary);"></i> Ask the Community</h3>
+        <button class="modal-close-btn" aria-label="Close modal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label" for="new-thread-title">Question Headline / Title:</label>
+          <input type="text" class="form-control" id="new-thread-title" placeholder="e.g., How to balance DSA practice with 3rd year college coursework?">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="new-thread-tag">Primary Tag:</label>
+          <select class="select-control" id="new-thread-tag">
+            <option value="#Academics">#Academics</option>
+            <option value="#Placement">#Placement</option>
+            <option value="#Admissions">#Admissions</option>
+            <option value="#DSA">#DSA</option>
+            <option value="#CampusLife">#CampusLife</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="new-thread-body">Detailed Description:</label>
+          <textarea class="form-control" id="new-thread-body" rows="5" placeholder="Elaborate on your context, what you've tried so far, or specific advice needed..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary modal-dismiss-btn">Cancel</button>
+        <button class="btn btn-primary" id="save-new-thread-btn"><i class="fas fa-paper-plane"></i> Post Question</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modular JavaScript Entry Point -->
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
